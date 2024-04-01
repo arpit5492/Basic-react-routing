@@ -43,16 +43,11 @@ function Products() {
     const prodItems = (
         products.map(data => {
             return (
-                // <li key={data.pCode}><Link state={data} to={`/products/${data.pCode}`} style={styles}>{data.PName}</Link></li>
-                    <div className="card" style={{marginRight: "20px", marginTop: "20px"}} key={data.pCode}>
+                    <div className="card shadow-lg" style={{marginRight: "20px", marginTop: "20px"}} key={data.pCode}>
                         <Link state={data} to={`/products/${data.pCode}`} style={{textDecoration: "none"}}>
                             <img src={data.img} style={{height: "250px"}} alt={data.pName} className="card-img-top" />
-                            <div className="card-body">
+                            <div className="card-footer text-center">
                                 <h5 className="card-title">{data.pName}</h5>
-                                <p className="card-text">{data.desc}</p>
-                            </div>
-                            <div className="card-footer">
-                                <h5 className="card-title">${data.price}</h5>
                             </div>
                         </Link>
                     </div>
@@ -61,10 +56,13 @@ function Products() {
         )
 
     return (
-        <div className="card-group">
-            {prodItems}
-            <Outlet context={products}/>
-        </div>
+        <>
+            <div className="card-group">
+                {prodItems}
+            </div>
+            <Outlet/>
+        </>
+        
     )
 }
 
