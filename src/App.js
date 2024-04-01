@@ -1,13 +1,43 @@
-// import { useState } from 'react';
 import './App.css';
 import Home from './components/Home';
 import Products from './components/Products';
 import About from './components/About';
 import ProdDet from './components/ProdDet';
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route, /*Link,*/ NavLink /*useRoutes*/} from "react-router-dom";
 import NotFound from './components/NotFound';
 
 function App() {
+
+  // let routeElements = useRoutes([
+  //   {
+  //       path: "/",
+  //       children: [
+  //           {
+  //               index: true,
+  //               element: <Home />
+  //           },
+  //           {
+  //               path: "/about",
+  //               element: <About />
+  //           },
+  //           {
+  //               path: "/products",
+  //               element: <Products />,
+  //               children: [
+  //                   {
+  //                       path: ":id",
+  //                       element: <ProdDet />
+  //                   }
+  //               ]
+  //           },
+  //           {
+  //               path: "*",
+  //               element: <NotFound />
+  //           }
+  //       ]
+  //   }
+  // ]);
+
   const styles = {
     textDecoration: "none",
     marginRight: "2rem",
@@ -16,9 +46,9 @@ function App() {
   return (
     <div className="App">
       <ul>
-        <li><Link to="/" style={styles}>Home</Link></li>
-        <li><Link to="/about" style={styles}>About</Link></li>
-        <li><Link to="/products" style={styles}>Products</Link></li>
+        <li><NavLink to="/" style={styles}>Home</NavLink></li>
+        <li><NavLink to="/about" style={styles}>About</NavLink></li>
+        <li><NavLink to="/products" style={styles}>Products</NavLink></li>
       </ul>
       <hr />
       <Routes>
@@ -31,6 +61,7 @@ function App() {
           <Route path='*' element={<NotFound />}/>
         </Route>
       </Routes>
+      {/* {routeElements} */}
     </div>
   );
 }
